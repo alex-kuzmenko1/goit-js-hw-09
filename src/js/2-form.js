@@ -20,11 +20,15 @@ try{
             console.error("Error parsing data:", error);
 }
 }
+form.addEventListener("input", (event) => {
+    formData[event.target.name] = event.target.value;
+    localStorage.setItem(localStorageKey, JSON.stringify(formData));
+});
 
 form.addEventListener("submit", (event) =>{
     event.preventDefault();
     if(!formData.email || formData.message){
-        alert("Fill all fiends");
+        alert("Fill all fields.");
         return
     }
 console.log("Form Data Submitted", formData);
